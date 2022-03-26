@@ -53,3 +53,10 @@ services:
 
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
+    healthcheck:
+      test: ["psql", "127.0.0.1", "-U", "username", "-c", "SELECT 1"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
