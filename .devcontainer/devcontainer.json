@@ -20,7 +20,20 @@
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"mtxr.sqltools",
-		"mtxr.sqltools-driver-pg"
+		"mtxr.sqltools-driver-pg",
+		"rebornix.ruby",
+		"castwide.solargraph",
+		"jnbt.vscode-rufo",
+		"castwide.ruby-debug",
+		"Kosai106.ruby-syntax-replacer",
+		"njpwerner.autodocstring",
+		"ms-azuretools.vscode-docker",
+		"GitHub.copilot",
+		"codezombiech.gitignore",
+		"ZainChen.json",
+		"christian-kohler.path-intellisense",
+		"esbenp.prettier-vscode",
+		"VisualStudioExptTeam.vscodeintellicode-insiders"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -29,7 +42,7 @@
 	// Uncomment the next line if you want to keep your containers running after VS Code shuts down.
 	// "shutdownAction": "none",
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	"postCreateCommand": "apt-get update && apt-get install -y curl"
+	"postCreateCommand": "apt-get update && apt-get install -y curl && cd /workspace && ./starup.sh"
 	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
 }
