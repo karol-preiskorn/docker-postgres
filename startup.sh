@@ -27,6 +27,10 @@ apt-get install software-properties-common -y
 apt-get update 
 apt-get install python3.9 -y
 
+# preapre ip
+apt install iproute2 -y
+ip -c=always a
+
 print_debug "run rubby prepare-db.ry"
 
 # ruby prepare-db.ry

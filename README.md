@@ -30,7 +30,9 @@
 
 # docker-compose
 
-- use [docker-compose.yaml](docker-compose.yaml)
+Use standar postgres [docker-compose.yaml](docker-compose.yaml) with `--add-host=host.docker.internal:host-gateway`
+
+    The host has a changing `IP` address (or none if you have no network access). We recommend that you connect to the special `DNS` name `host.docker.internal` which resolves to the internal `IP` address used by the host. This is for development purpose and will not work in a production environment outside of Docker Desktop for Windows / Mac.
 
 # how connect and use postgres in docker (linux environment)
 
