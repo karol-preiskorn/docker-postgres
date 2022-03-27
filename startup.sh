@@ -11,8 +11,7 @@ apt install make ruby-full zlib1g-dev build-essential libssl-dev libffi-dev pyth
 # pg development for sequel
 apt install libpq-dev -y
 
-
-echo "gem: --no-document" > ~/.gemrc
+echo "gem: --no-document" >~/.gemrc
 gem install bundler
 gem install sequel
 gem install faker
@@ -24,7 +23,7 @@ gem env home
 print_debug "install python"
 
 apt-get install software-properties-common -y
-apt-get update 
+apt-get update
 apt-get install python3.9 -y
 
 # preapre ip

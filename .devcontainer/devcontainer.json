@@ -6,8 +6,7 @@
 	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
 	"dockerComposeFile": [
-		"../docker-compose.yaml",
-		"docker-compose.yml"
+		"../docker-compose.yaml"
 	],
 	// The 'service' property is the name of the service for the container that VS Code should
 	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
@@ -27,7 +26,6 @@
 		"castwide.ruby-debug",
 		"Kosai106.ruby-syntax-replacer",
 		"njpwerner.autodocstring",
-		"ms-azuretools.vscode-docker",
 		"GitHub.copilot",
 		"codezombiech.gitignore",
 		"ZainChen.json",
@@ -40,9 +38,9 @@
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],
 	// Uncomment the next line if you want to keep your containers running after VS Code shuts down.
-	"shutdownAction": "none",
+	// "shutdownAction": "none",
 	// Uncomment the next line to run commands after the container is created - for example installing curl.
-	"postCreateCommand": "apt-get update && apt-get install -y curl && cd /workspace && ls && ip -4 route list match 0/0 | cut -d' ' -f3"
+	"postCreateCommand": "cd /workspace && ls && ip -4 route list match 0/0 | cut -d' ' -f3 && bash ./startup.sh"
 	// Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
 }

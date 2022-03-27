@@ -5,8 +5,8 @@
       "server": "172.18.0.1",
       "port": 5432,
       "driver": "PostgreSQL",
-      "name": "pg",
-      "database": "default_database",
+      "name": "db",
+      "database": "db",
       "username": "username",
       "password": "password"
     }
