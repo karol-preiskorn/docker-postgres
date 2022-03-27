@@ -12,8 +12,8 @@ services:
   # Note: This may change the commands you are going to use a little bit.
   database:
     # Official Postgres image from DockerHub (we use the last version)
-    image: "postgres:latest"
-
+    image: "ubuntu/postgres:latest"
+    container_name: postgres
     # By default, a Postgres database is running on the 5432 port.
     # If we want to access the database from our computer (outside the container),
     # we must share the port with our computer's port.
@@ -24,11 +24,10 @@ services:
     ports:
       - 5432:5432
 
-    environment:
-    
-      POSTGRES_USER: username # The PostgreSQL user (useful to connect to the database)
-      POSTGRES_PASSWORD: password # The PostgreSQL password (useful to connect to the database)
-      POSTGRES_DB: default_database # The PostgreSQL default database (automatically created at first launch)
+    # environment:
+    #   POSTGRES_USER: username # The PostgreSQL user (useful to connect to the database)
+    #   POSTGRES_PASSWORD: password # The PostgreSQL password (useful to connect to the database)
+    #   POSTGRES_DB: db # The PostgreSQL default database (automatically created at first launch)
 
     ####
     ## If you want to use a `.env` file, please comment the `environment` section.
@@ -44,19 +43,19 @@ services:
 
     # The `volumes` tag allows us to share a folder with our container.
     # Its syntax is as follows: [folder path on our machine]:[folder path to retrieve in the container]
-    volumes:
-      # In this example, we share the folder `db-data` in our root repository, with the default PostgreSQL data path.
-      # It means that every time the repository is modifying the data inside
-      # of `/var/lib/postgresql/data/`, automatically the change will appear in `db-data`.
-      # You don't need to create the `db-data` folder. Docker Compose will do it for you.
-      - ./db-data/:/var/lib/postgresql/data/
-
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+    # volumes:
+    # In this example, we share the folder `db-data` in our root repository, with the default PostgreSQL data path.
+    # It means that every time the repository is modifying the data inside
+    # of `/var/lib/postgresql/data/`, automatically the change will appear in `db-data`.
+    # You don't need to create the `db-data` folder. Docker Compose will do it for you.
+    # - ./db-data/:/var/lib/postgresql/data/
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
 
     healthcheck:
-      test: ["psql", "127.0.0.1", "-U", "username", "-c", "SELECT 1"]
-      interval: 1m30s
-      timeout: 30s
-      retries: 5
-      start_period: 30s
+        test: [ "CMD", "pg_isready", "-q", "-d", "db", "-U", "username" ]
+        timeout: 45s
+        interval: 10s
+        retries: 3
+  
+
